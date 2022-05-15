@@ -1,0 +1,25 @@
+<div class="col-md-6 offset-md-3">
+    <h3>Create kidzone</h3>
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label> Nom de Kidzone  </label>
+            <input type="text" class="form-control" id="firstname"  [(ngModel)] = kz.description name="firstname" >
+        </div>
+    
+        <div class="form-group">
+            <label> Nombres d'employees  </label>
+            <input   type="text" class="form-control" id="firstname"  [(ngModel)] = kz.nbEmp name="nbemp">
+        </div>
+        <div class="form-group">
+            <label> Numéro du Telephone  </label>
+            <input type="text" class="form-control" id="firstname"  [(ngModel)] = kz.numTel name="numtel">
+        </div>
+        <div class="form-group">
+            <label> Prix par enfant  </label>
+            <input type="text" class="form-control" id="firstname"  [(ngModel)] = kz.cost name="cost">
+        </div> <br>
+    <button class="btn btn-success" type="submit">save</button>
+    
+    </form>
+    </div>
+    

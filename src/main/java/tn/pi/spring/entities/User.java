@@ -18,6 +18,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -72,8 +74,10 @@ public class User implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "userNotif")
 	Set<Notification> notifs;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
-	Set<Event> events;
+	
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "usersub")
+	Set<Subscribe> subsribes;
 	
 	
 	

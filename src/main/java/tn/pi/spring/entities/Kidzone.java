@@ -1,16 +1,25 @@
 package tn.pi.spring.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -28,28 +37,34 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@EqualsAndHashCode
-@FieldDefaults(level = AccessLevel.PRIVATE)
-public class Kidzone {
+public class Kidzone implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	long id;
-	
 	 String description;
-	 String logo;
+	  
+	@Lob
+	@Column(columnDefinition = "MEDUIMBLOB")
+	String logo;
+	 
 	 long nbEmp;
-	 Date creationDate;
+	 
+	 @Temporal(TemporalType.DATE)
+	 Date creationDate = new Date(System.currentTimeMillis());
 	 String numTel;
 	 long cost;
+	 String address;
 	 
 	 @ManyToOne
 	 User userKidzone;
 	 
-	 @OneToMany(cascade = CascadeType.ALL, mappedBy = "kidzoneApp")
-		Set<Appointment> appointments;
 	 
 	 @OneToMany(cascade = CascadeType.ALL, mappedBy = "kidzoneEvent")
 		Set<Event> events;
+	 
+	 @JsonIgnore
+	 @OneToMany(cascade = CascadeType.ALL, mappedBy = "kidzonesub")
+		Set<Subscribe> subsribes;
 	
 
 }

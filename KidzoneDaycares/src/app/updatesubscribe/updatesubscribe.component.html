@@ -1,0 +1,25 @@
+<div class="col-md-6 offset-md-3">
+    <h3>Sucription Form </h3>
+    <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label>
+            FirstName
+        </label>
+        <input type="text" class="form-control" id=""fname [(ngModel)]= sub.fname   name="fname">
+    </div>
+    <div class="form-group">
+        <label>
+            LastName
+        </label>
+        <input type="text" class="form-control" id=""lname [(ngModel)]= sub.lname name="lname">
+    </div><div class="form-group">
+        <label>
+            Child Age
+        </label>
+        <input type="text" class="form-control" id="age" [(ngModel)]= sub.Age name="Age">
+    </div>
+    <br>
+    <button class="btn btn-info" type="submit">submit</button>
+    
+    </form>
+    </div>

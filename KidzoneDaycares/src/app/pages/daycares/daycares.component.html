@@ -1,0 +1,127 @@
+
+<!-- Page Header End -->
+<div class="container-xxl py-5 page-header position-relative mb-5">
+    <div class="container py-5">
+        <h1 class="display-3 text-white animated slideInDown mb-4">Daycares</h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">Contact Us</li>
+                <li class="breadcrumb-item text-white active" aria-current="page" ><a href="createkidzone" class="nav-link" >Ajouter KidZone</a> </li>
+                
+            </ol>
+            <form class="form-inline my-2 my-lg-8" style="width: 200 px;">
+                <input type="search" (ngModelChange)="searchKidzone(key.value)" #key="ngModel" ngModel
+                 name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search Daycare..." required>
+             </form> 
+        </nav>
+    </div>
+</div>
+
+<!-- Page Header End -->
+
+<!-- Classes Start -->
+
+<div class="container-xxl py-5" style="background: white;" id="main-container">
+    <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+        <h1 class="mb-3">School Classes</h1>
+        <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
+    </div>
+    <div class="container" style="display: flex;flex-wrap: wrap;">
+       
+        <div *ngFor="let k of listKidzones | paginate:{itemsPerPage:6, currentPage : p}; " class= "row g-4"  >
+            <div class=" wow fadeInUp" data-wow-delay="0.1s" >
+                <div class="classes-item">
+                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                        <img class="image"  src="data:image/png;base64,{{k.logo}}">
+                    </div>
+                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                        <a class="d-block text-center h3 mt-3 mb-4" href="">{{k.description}}</a>
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <div class="d-flex align-items-center">
+                                <img class="rounded-circle flex-shrink-0" src="assets/img/user.jpg" alt="" style="width: 45px; height: 45px;">
+                                <div class="ms-3">
+                                    <h6 class="text-primary mb-1"> </h6>
+                                    <small>Teacher </small>
+                                </div>
+                            </div>
+                            <span class="bg-primary text-white rounded-pill py-2 px-3" href="">${{k.cost}}</span>
+                        </div>
+                        <div class="row g-1">
+                            <div class="col-4">
+                                <div class="border-top border-3 border-primary pt-2">
+                                    <h6 class="text-primary mb-1">Age:</h6>
+                                    <small>3-5 Years</small>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="border-top border-3 border-success pt-2">
+                                    <h6 class="text-success mb-1">Contact:</h6>
+                                    <small>{{k.numTel}}</small>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="border-top border-3 border-warning pt-2">
+                                    <h6 class="text-warning mb-1">Enseignants:</h6>
+                                    <small>{{k.nbEmp}}</small>
+                                </div>
+                            </div>
+                            
+                                <div class="col-4">
+                                    <div class="float-right btn-group btn-group-sm">
+                                       <button (click)="kidzoneDtetails(k.id)" class="btn btn-info">More..</button> &nbsp; 
+                                       <button type="button" (click)="Subscribe()" class="btn btn-outline-danger" > Subscribe </button>
+                                        </div>
+                                        <div>
+                                
+                            </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            
+          
+        </div>
+
+                   
+  </div>
+
+  <!--
+  <div style="width:500px; margin:50px auto;">
+    
+    <mat-paginator [length]="100"
+    [pageSize]="4"
+    [pageSizeOptions]="[4, 6, 8, 10]"
+    aria-label="Select page"> 
+
+    </mat-paginator>
+    </div> -->
+    <pagination-controls (pageChange)="p = $event" ></pagination-controls>
+    
+
+<!-- Classes End -->
+<br>
+<br> <br>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Description</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Emloyees</th>
+        <th scope="col"> Cost</th>
+        <th scope="col"> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of listKidzones">
+        <td>#</td>
+        <td>{{s.description}}</td>
+        <td>{{s.numTel}}</td>
+        <td>{{s.nbEmp}}</td>
+        <td>{{s.cost}}</td>
+       <td><button class="btn btn-outline-danger" (click)="DeleteKidzone(s.id)" > delete</button></td>
+      </tr>
+    </tbody>
+  </table>

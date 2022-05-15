@@ -29,8 +29,6 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@EqualsAndHashCode
-@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Event implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,8 +40,7 @@ public class Event implements Serializable {
     String eventInfo;
     String eventImage;
     
-    @ManyToMany(mappedBy = "events",cascade = CascadeType.ALL)
-    Set<User> users;
+   
     
     @ManyToOne
 	 Kidzone kidzoneEvent;

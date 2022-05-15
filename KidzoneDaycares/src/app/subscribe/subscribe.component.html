@@ -1,0 +1,53 @@
+<div class="col-md-6 offset-md-3">
+<h3>Sucription Form </h3>
+<form [formGroup]="reactiveform" (ngSubmit)="onSubmit()">
+<div class="form-group">
+    <label>
+        FirstName
+    </label>
+    <input type="text" class="form-control" id="lname" [(ngModel)]= subscribe.fname   formControlName="fname">
+    <small *ngIf="reactiveform.get('fname')?.invalid && reactiveform.get('fname')?.touched" class="text-danger">please enter a correct name! </small> 
+</div>
+<div class="form-group">
+    <label>
+        LastName
+    </label>
+    <input type="text" class="form-control" id="lname "[(ngModel)]= subscribe.lname formControlName="lname">
+    <small *ngIf="reactiveform.get('lname ')?.invalid && reactiveform.get('lname ')?.touched" class="text-danger">please enter a correct name! </small> 
+</div><div class="form-group">
+    <label>
+        Child Age
+    </label>
+    <input type="text" class="form-control" id="age" [(ngModel)]= subscribe.Age formControlName="Age">
+    <small *ngIf="reactiveform.get('Age')?.invalid && reactiveform.get('Age')?.touched" class="text-danger">please enter your Kid age here! </small> 
+
+</div>
+<br>
+<button class="btn btn-info"   [disabled]="reactiveform.invalid" type="submit">submit</button>
+
+</form>
+</div>
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">FirstName</th>
+      <th scope="col">LastName</th>
+      <th scope="col">Subscription Date</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let s of listsubs">
+      <td>#</td>
+      <td>{{s.fname}}</td>
+      <td>{{s.fname}}</td>
+      <td>{{s.dateInscri}}</td>
+      <td><button class="btn btn-outline-info" (click)="Updatesub(s.id)">update</button> &nbsp;
+      <button class="btn btn-outline-danger" (click)="Deletesub(s.id)" > delete</button></td>
+    </tr>
+  </tbody>
+</table>
+<h3>Here you can download a pdf file contains all subscribers infos  &nbsp; <button class="btn btn-outline-danger" (click)="downloadPdfFile()"> Get File</button></h3>
+

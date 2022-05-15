@@ -1,0 +1,36 @@
+    <div class="col-md-6 offset-md-3">
+    <h3>Create kidzone</h3>
+    <form  [formGroup]="reactiveform" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label> Nom de Kidzone  </label>
+            <input   type="text" class="form-control" id="description"  [(ngModel)] = kz.description formControlName="description" >
+            <small *ngIf="reactiveform.get('description')?.invalid && reactiveform.get('description')?.touched" class="text-danger">veuillez saisissez un  nom pour votre kidzone</small> 
+        </div>
+
+        <div class="form-group">
+            <label> Nombres d'employees  </label>
+            <input   re type="text" class="form-control" id="nbemp"  [(ngModel)] = kz.nbEmp formControlName="nbEmp">
+        </div>
+        <div class="form-group">
+            <label> Numéro du Telephone  </label>
+            <input type="text" class="form-control" id="tel"  [(ngModel)] = kz.numTel  formControlName="numTel">
+            <small *ngIf="reactiveform.get('numTel')?.invalid && reactiveform.get('numTel')?.touched" class="text-danger">veuillez saisissez votre numéro</small> 
+        </div>
+        <div class="form-group">
+            <label> Address  </label>
+            <input type="text" class="form-control" id="addr"  [(ngModel)] = kz.address  formControlName="address">
+            <small *ngIf="reactiveform.get('address')?.invalid && reactiveform.get('address')?.touched" class="text-danger">veuillez ajouter votre address</small> 
+        </div>
+        <div class="form-group">
+            <label> Prix par enfant  </label>
+            <input type="text" class="form-control" id="costs"  [(ngModel)] = kz.cost formControlName="cost">
+            <small *ngIf="reactiveform.get('cost')?.invalid && reactiveform.get('cost')?.touched" class="text-danger">veuillez saisissez la prix d'inscription</small> 
+        
+          
+        </div> <br>
+    <button [disabled]="reactiveform.invalid" class="btn btn-success" type="submit">save</button>
+
+    </form>
+
+    </div>
+    <div id="map"></div>
